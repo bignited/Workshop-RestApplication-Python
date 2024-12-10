@@ -24,6 +24,16 @@ Your Flask application sets up two routes at `/hello` to handle both `GET` and `
   Hello, World!
   ```
 
+    ```bash
+  curl http://127.0.0.1:5000/friends
+  ```
+  Output:
+  ```json
+  [
+    "Koen"
+  ]
+  ```
+
 - **POST Request**:
   ```bash
   curl -X POST http://127.0.0.1:5000/hello -H "Content-Type: application/json" -d '{"name": "Jeffeke"}'
@@ -34,7 +44,16 @@ Your Flask application sets up two routes at `/hello` to handle both `GET` and `
     "message": "Hello, Jeffeke"
   }
   ```
+```bash
+  curl -X POST http://127.0.0.1:5000/friend -H "Content-Type: application/json" -d '{"name": "Koen"}'
+```
 
+Output:
+```json
+{
+  "message": "Welcome, Koen"
+}
+```
 #### Using Postman:
 - **GET Request**: Select `GET`, enter `http://127.0.0.1:5000/hello`, and send the request.
 - **POST Request**: Select `POST`, enter `http://127.0.0.1:5000/hello`, set `Content-Type` to `application/json`, and provide JSON in the body, e.g., `{"name": "Jeffeke"}`.
