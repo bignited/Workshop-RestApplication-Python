@@ -25,6 +25,11 @@ def new_friends():
     friends.append(name)
     return jsonify(message=f"Welcome, {name}")
 
+@app.route('/friend/<name>', methods=['DELETE'])
+def remove_friend(name):
+    friends.remove(name)
+    return jsonify(message=f"Bye, {name}")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
