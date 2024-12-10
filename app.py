@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-friends = []   
+friends = ['Alice', 'Bob', 'Charlie']   
 
 @app.route('/hello', methods=['GET'])
 def hello_world():
@@ -34,6 +34,8 @@ def remove_friend(name):
 def update_friend(name):
     data = request.get_json()
     new_name = data.get('name')
+    if name not in friends:
+        return jsonify(message=f"{name} not found")
     friends.remove(name)
     friends.append(new_name)
     return jsonify(message=f"Updated, {name} to {new_name}")
