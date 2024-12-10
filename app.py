@@ -30,6 +30,13 @@ def remove_friend(name):
     friends.remove(name)
     return jsonify(message=f"Bye, {name}")
 
+@app.route('/friend/<name>', methods=['PUT'])
+def update_friend(name):
+    data = request.get_json()
+    new_name = data.get('name')
+    friends.remove(name)
+    friends.append(new_name)
+    return jsonify(message=f"Updated, {name} to {new_name}")
 
 if __name__ == '__main__':
     app.run(debug=True)
